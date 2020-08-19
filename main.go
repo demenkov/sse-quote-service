@@ -1,7 +1,7 @@
 package main
 
 import (
-	ssequote "git.merostm.com/scm/goq/go-sse-quote-service/sse-quote"
+	ssequote "git.merostm.com/scm/goq/go-sse-quote-service.git/sse-quote"
 	//"./sse-quote"
 	"github.com/joho/godotenv"
 	"log"
