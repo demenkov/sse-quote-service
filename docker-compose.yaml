@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  go-quote-sse:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./
+      args:
+        - 'SSH_PRIVATE_KEY=$SSH_PRIVATE_KEY'
+    restart: unless-stopped
+    ports:
+      - "${REST_PORT:-8081}:${REST_PORT:-8081}"
+  redis:
+    image: redis:5.0
+    restart: always
+    volumes:
+        - '/var/lib/redis:/data'
+    sysctls:
+        net.core.somaxconn: '511'
+    command: ["redis-server", "--requirepass", "${REDIS_PASSWORD}"]
+    environment:
+        REDIS_PASSWORD: ${REDIS_PASSWORD}
