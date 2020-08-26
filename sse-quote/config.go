@@ -17,6 +17,7 @@ type Config struct {
 }
 
 type SocketConfig struct {
+	Host string
 	Port int
 }
 
@@ -56,6 +57,7 @@ func NewConfig() *Config {
 			Key: getEnv("CURL_CLOUD_PKEY", ""),
 		},
 		Socket: SocketConfig{
+			Host: getEnv("SOCKET_HOST", "127.0.0.1"),
 			Port: getEnvAsInt("SOCKET_PORT", 9090),
 		},
 		GinMode: getEnv("GIN_MODE", "debug"),
@@ -68,6 +70,10 @@ func (r *RedisConfig) GetHost() string {
 
 func (r *CloudConfig) GetHost() string {
 	return r.Url
+}
+
+func (r *SocketConfig) GetHost() string {
+	return fmt.Sprintf("%s:%d", r.Host, r.Port)
 }
 
 func getEnv(key string, defaultVal string) string {

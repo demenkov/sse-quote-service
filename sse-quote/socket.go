@@ -65,5 +65,5 @@ func SocketIO() {
 	router.GET("/sse/*any", gin.WrapH(server))
 	router.POST("/sse/*any", gin.WrapH(server))
 
-	_ = router.Run(fmt.Sprintf(":%d", Conf.Socket.Port))
+	_ = router.Run(Conf.Socket.GetHost())
 }
