@@ -17,8 +17,9 @@ type Config struct {
 }
 
 type SocketConfig struct {
-	Host string
-	Port int
+	Host   string
+	Port   int
+	Origin string
 }
 
 type CloudConfig struct {
@@ -57,8 +58,9 @@ func NewConfig() *Config {
 			Key: getEnv("CURL_CLOUD_PKEY", ""),
 		},
 		Socket: SocketConfig{
-			Host: getEnv("SOCKET_HOST", "127.0.0.1"),
-			Port: getEnvAsInt("SOCKET_PORT", 9090),
+			Host:   getEnv("SOCKET_HOST", "127.0.0.1"),
+			Port:   getEnvAsInt("SOCKET_PORT", 9090),
+			Origin: getEnv("ORIGIN_HOST", "*"),
 		},
 		GinMode: getEnv("GIN_MODE", "debug"),
 	}
