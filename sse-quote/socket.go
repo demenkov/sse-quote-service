@@ -62,8 +62,8 @@ func SocketIO() {
 	}()
 
 	router.Use(GinMiddleware(Conf.Socket.Origin))
-	router.GET("/sse/*any", gin.WrapH(server))
-	router.POST("/sse/*any", gin.WrapH(server))
+	router.GET("/*any", gin.WrapH(server))
+	router.POST("/*any", gin.WrapH(server))
 
 	_ = router.Run(Conf.Socket.GetHost())
 }
