@@ -10,4 +10,4 @@ require (
 	github.com/r3labs/sse v0.0.0-20201007160420-c638e5516aa7
 )
 
-replace git.merostm.com/scm/goq/go-sse-quote-service.git/sse-quote => ./sse-quote
+replace git.merostm.com/scm/goq/go-sse-quote-service.git/sse-quote v1.0.3 => ./sse-quote
